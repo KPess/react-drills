@@ -3,16 +3,23 @@ import logo from "./logo.svg";
 import "./App.css";
 
 class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      output: '',
+    };
+  }
+
+  handleChange(val) {
+    this.setState({ output: val });
+  }
+
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <input onChange={e => this.handleChange(e.target.value)} type="text" style={{borderRadius: 25, }} />
+        <h1>{this.state.output}</h1>
       </div>
     );
   }
